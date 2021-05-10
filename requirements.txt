@@ -4,7 +4,6 @@ certifi==2020.12.5
 cffi==1.14.3
 chardet==4.0.0
 click==7.1.2
--e git+https://github.com/dgargdipin/dbms-user.git@a7ddc12ab6bf877c3d692c89ff2ae91f771d5ff5#egg=cms
 cryptography==3.2.1
 dnspython==2.0.0
 email-validator==1.1.1
@@ -29,7 +28,6 @@ openpyxl==3.0.5
 packaging==20.9
 pandas==1.1.4
 Pillow==8.0.0
-pkg-resources==0.0.0
 pluggy==0.13.1
 protobuf==3.13.0
 psycopg2-binary==2.8.6
