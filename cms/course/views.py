@@ -164,6 +164,9 @@ def handle_quiz(course_id: int, quiz_id: int):
         abort(405)
     bool_values = []
     user_response=QuizResponse.query.filter_by(user_id=current_user.id,quiz_id=quiz_id).first()
+    print(datetime.now())
+    print(quiz.start_time)
+    print(quiz.end_time)
     if not user_response:
         if datetime.now()>=quiz.start_time and datetime.now()<quiz.end_time:
             print(datetime.now(),quiz.start_time,quiz.end_time)
@@ -234,7 +237,7 @@ def discussion_forum(course_id: int):
     for post in Posts:
         temp_user = User.query.filter_by(id= post.user_id).first()
         if not temp_user:
-            temp_user = Professor.query.filter_by(id= post.user_id).first()
+            temp_user = Professor.query.filter_by(id= (post.user_id)/100).first()
         Names[post.user_id] = temp_user.name
 
     addpostForm= postForm()
