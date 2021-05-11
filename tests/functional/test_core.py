@@ -113,3 +113,7 @@ def test_user_enrollment_request(test_client, login_default_user):
     response2 = test_client.get(enroll_link + '/1',follow_redirects=True)
     assert response2.status_code == 200
 
+def test_Dropcourse(test_client,login_default_user):
+    response = test_client.get('/course/drop/1', follow_redirects=True)
+    assert response.status_code == 200
+    assert b'Welcome Dipin' in response.data
