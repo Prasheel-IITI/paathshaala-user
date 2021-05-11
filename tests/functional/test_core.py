@@ -36,6 +36,8 @@ def test_valid_login_logout(test_client, init_database):
                                 data=dict(email='dgargdipin@gmail.com', password='abc'),
                                 follow_redirects=True)
     assert response.status_code == 200
+    print(response.data)
+
     assert b'Dipin' in response.data
     assert b'Log Out' in response.data
     assert b'Login' not in response.data

@@ -35,7 +35,7 @@
                         {% for course in enrolled_courses %}
                         <tr>
                                                                 <td scope="row">{{loop.index}}</td>
-                                                                <td><a href={{url_for('course.view_course',course_id=course.id)}} class="btn btn-link">{{course.name}}</a></td>
+                                                                <td><a href={{url_for('course.view_course',course_id=course.id)}} class="btn btn-link view_course_links">{{course.name}}</a></td>
                                                                 <td>{{course.course_code}}</td>
                                                                 <td>{{ course.branches|join(', ') }}</td>
                                                                 <td>{{course.professor.name}}</a></td>
