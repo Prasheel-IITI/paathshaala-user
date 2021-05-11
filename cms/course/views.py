@@ -80,6 +80,9 @@ def attempt_quiz(quiz_id):
     current_quiz=Quiz.query.get_or_404(quiz_id)
     # if current_user not in current_quiz.course.students:
         # abort(405)
+    if current_quiz in [a.quiz for a in current_user.quiz_responses]:
+        return redirect(url_for('course.handle_quiz',course_id=current_quiz.course.id,quiz_id=current_quiz.id))
+    
     if datetime.now()>current_quiz.end_time:
         abort(404)
     quiz_Class,default_fields=quiz_factory(current_quiz)
@@ -162,7 +165,11 @@ def handle_quiz(course_id: int, quiz_id: int):
     bool_values = []
     user_response=QuizResponse.query.filter_by(user_id=current_user.id,quiz_id=quiz_id).first()
     if not user_response:
-        return redirect(url_for('course.attempt_quiz',quiz_id=quiz_id))
+        if datetime.now()>=quiz.start_time and datetime.now()<quiz.end_time:
+            print(datetime.now(),quiz.start_time,quiz.end_time)
+            return redirect(url_for('course.attempt_quiz',quiz_id=quiz_id))
+        else:
+            abort(404)
     else:
         return redirect(url_for('course.display_attempt',quiz_id=quiz_id,course_id=course_id))
     # return render_template('display_quiz.html', questions=quiz.questions, course_id=course_id, quiz_id=quiz_id,
