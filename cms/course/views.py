@@ -165,8 +165,11 @@ def handle_quiz(course_id: int, quiz_id: int):
     bool_values = []
     user_response=QuizResponse.query.filter_by(user_id=current_user.id,quiz_id=quiz_id).first()
     if not user_response:
-        if datetime.now()>=course.start_time and datetime.now()<course.end_time:
+        if datetime.now()>=quiz.start_time and datetime.now()<quiz.end_time:
+            print(datetime.now(),quiz.start_time,quiz.end_time)
             return redirect(url_for('course.attempt_quiz',quiz_id=quiz_id))
+        else:
+            abort(404)
     else:
         return redirect(url_for('course.display_attempt',quiz_id=quiz_id,course_id=course_id))
     # return render_template('display_quiz.html', questions=quiz.questions, course_id=course_id, quiz_id=quiz_id,
