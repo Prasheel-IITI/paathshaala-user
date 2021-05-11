@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="jumbotron">
+<div style="margin-top: 2%;" class="jumbotron">
         <h1 class="display-4">{% if current_user.is_authenticated %}
                 Welcome {{current_user.name}}
 </h1>
@@ -9,10 +9,17 @@
                         class="btn btn-primary float-right enr1" href="{{url_for('users.enroll')}}" role="button">Enroll in
                         courses </a>
                 {%else%}
+<<<<<<< HEAD
                 <h1 class="display-4">Welcome to PAATHSHAALA</h1>
                 <hr class="my-4">
                 <p class="lead">This is the CS 258 Database Management System created by Abhishek Bansal,Arastu,Dipin Garg,Harsh Kushwaha, Jainil Shah,Prasheel Kumar Tiwari. <br>With this project
                 we hope to ease up this difficult process of online classes for both professors and students.</p>
+=======
+                <h1 class="display-4">Paathshaala</h1>
+                <hr class="my-4">
+                <h4 class="lead">This is the CS258 project created by Dipin Garg, Arastu, Abhishek Bansal, Prasheel Kumar Tiwari, Harsh Kushwaha and Jainil Shah.</h4>
+                <h4 class="lead">With this project we hope to ease up this difficult process of online classes for both professors and students.</h4>
+>>>>>>> upstream/main
 
                 {% endif %}
         

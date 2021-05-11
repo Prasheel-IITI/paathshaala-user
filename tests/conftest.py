@@ -91,3 +91,13 @@ def login_default_user(test_client):
     yield  # this is where the testing happens!
 
     test_client.get('/logout', follow_redirects=True)
+
+@pytest.fixture(scope='module')
+def enrollinCourse(test_client):
+    user = User.query.filter_by(email='dgargdipin@gmail.com').first()
+    user.courses.append(1)
+
+    yield  # this is where the testing happens!
+
+    test_client.get('/logout', follow_redirects=True)
+
