@@ -13,7 +13,7 @@ def test_home_page(test_client):
     response = test_client.get('/')
     print(response.data)
     assert response.status_code == 200
-    assert b"Database" in response.data
+    assert b"Course" in response.data
     assert b"students" in response.data
 def test_home_page_post():
     """
