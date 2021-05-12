@@ -261,6 +261,7 @@ class quizQuestionResponse(db.Model):
                     print(resp_id_string,self.question.ans.split(','),self.response)
                     if resp_id_string in self.question.ans.split(','):
                         ans+=1
+                    else: return 0
                 return ans*self.question.marks/len(self.question.ans.split(','))
             else: return 0
     @property
