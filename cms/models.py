@@ -261,6 +261,7 @@ class quizQuestionResponse(db.Model):
                     print(resp_id_string,self.question.ans.split(','),self.response)
                     if resp_id_string in self.question.ans.split(','):
                         ans+=1
+                    else: return 0
                 return ans*self.question.marks/len(self.question.ans.split(','))
             else: return 0
     @property
@@ -303,5 +304,5 @@ class DiscussionPost(db.Model):
     user_id=db.Column(db.Integer, db.ForeignKey('users.id'))
     title= db.Column(db.String())
     details = db.Column(db.String())
-    timeofpost = db.Column(db.DateTime, nullable= False, default= datetime.utcnow)
+    timeofpost = db.Column(db.DateTime, nullable= False, default= datetime.now)
     attachments=db.relationship('Attachment',backref='post')
